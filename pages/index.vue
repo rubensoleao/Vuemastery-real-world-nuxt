@@ -17,17 +17,15 @@ export default {
       title: 'Event Listing',
     }
   },
-  asyncData({ $axios, error }) {
-    return $axios
-      .get('http://localhost:3000/events')
-      .then((response) => {
-        return {
-          events: response.data,
-        }
-      })
-      .catch((err) => {
-        error({ statusCode: 503, message: 'Unable to fetch events' })
-      })
+  async asyncData({ $axios, error }) {
+    try {
+      const { data } = await $axios.get('http://localhost:3000/events')
+      return {
+        events: data,
+      }
+    } catch (err) {
+      error({ statusCode: 503, message: 'Unable to fetch events' })
+    }
   },
   components: {
     EventCard,
