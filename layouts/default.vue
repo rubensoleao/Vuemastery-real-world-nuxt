@@ -12,6 +12,18 @@ export default {
   components: {
     NavBar,
   },
+  head() {
+    return {
+      titleTemplate: '%s - real world events',
+      meta: [
+        {
+          hid: 'description', //Heder ID, this avoids duplication of same headers
+          name: 'description',
+          content: 'Where you can find all the evets taking place in your area',
+        },
+      ],
+    }
+  },
 }
 </script>
 
